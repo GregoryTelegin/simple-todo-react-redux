@@ -111,7 +111,15 @@
       "title": "Высочайший приоритет",
       "editing": false,
       "priority": "6",
-      "todos": []
+      "todos": [
+        {
+          "id": "4e9b83e4-c66a-4a30-bd5b-638c70d079c6",
+          "title": "1",
+          "editable": false,
+          "completed": false,
+          "priority": "6"
+        }
+      ]
     },
     {
       "id": "81eca455-b588-4163-852c-d7f7aab40c53",

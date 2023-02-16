@@ -93,6 +93,9 @@ function Todo() {
     }
     return (
         <>
+            <NavLink to="/" className="returnHomeButton">
+                Вернуться к списку листов
+            </NavLink>
             {
                 showForm === true ?
                     (
