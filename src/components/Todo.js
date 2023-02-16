@@ -21,6 +21,7 @@ let newTodo = {
 function Todo() {
     const location = useLocation();
     const dispatch = useDispatch();
+    const [selectedFilter, setSelectedFilter] = useState('all');
     const [selectedTodos, setSelectedTodos] = useState([]);
     const [todos, setTodos] = useState([]);
     const [load, setLoading] = useState(true);
@@ -40,6 +41,11 @@ function Todo() {
         })
         setLoading(false);
     }, [setSelectedTodos])
+
+    const selectedFilterForTodos = (e) => {
+        setSelectedFilter(e.target.value)
+    }
+
     const handleChange = (e) => {
         newTodo[e.target.name] = e.target.value;
     }
@@ -60,36 +66,51 @@ function Todo() {
         };
         setShowForm(false)
     };
-    const editingTodo = (e, id, index) => {
-        const updatedTodosLists = selectedTodos;
-        console.log( updatedTodosLists.todos[index].editable)
-        updatedTodosLists.todos[index].editable = true;
-        setSelectedTodos({...updatedTodosLists})
+    const editingTodo = (e, id) => {
+        for (let index = 0; index < selectedTodos.todos.length; index++) {
+            if (selectedTodos.todos[index].id === id) {
+                const updatedTodosLists = selectedTodos;
+                console.log(updatedTodosLists.todos[index].editable)
+                updatedTodosLists.todos[index].editable = true;
+                setSelectedTodos({...updatedTodosLists})
+            }
+        }
     }
     const removeTodo = (e, id) => {
         dispatch(deleteTodo({id, selectedTodos}))
         setSelectedTodos({...selectedTodos})
     };
 
-    const updatedTodo = (e, list, index) => {
-        if (e.key === 'Enter') {
-            e.preventDefault()
-            list.title = e.target.value;
-            list.editable = false;
-            dispatch(updateTodo({list, selectedTodos, index}))
-            selectedTodos.todos.splice(index, 1, list)
-            selectedTodos.todos[index].editable = false;
-            setSelectedTodos({...selectedTodos})
-        } else if (e.key === 'Escape') {
-            selectedTodos.todos[index].editable = false;
-            setSelectedTodos({...selectedTodos})
+    const updatedTodo = (e, list) => {
+        for (let index = 0; index < selectedTodos.todos.length; index++) {
+            if (selectedTodos.todos[index].id === list.id) {
+                if (e.key === 'Enter') {
+                    e.preventDefault()
+                    list.title = e.target.value;
+                    list.editable = false;
+                    dispatch(updateTodo({list, selectedTodos, index}))
+                    selectedTodos.todos.splice(index, 1, list)
+                    selectedTodos.todos[index].editable = false;
+                    setSelectedTodos({...selectedTodos})
+                } else if (e.key === 'Escape') {
+                    selectedTodos.todos[index].editable = false;
+                    setSelectedTodos({...selectedTodos})
+                }
+            }
         }
+
     }
 
-    const isCompleted = (e, list, index) => {
-        dispatch(completeTodo({list, selectedTodos, index}))
-        selectedTodos.todos.splice(index, 1, list)
-        setSelectedTodos({...selectedTodos})
+    const isCompleted = (e, list) => {
+        console.log(selectedTodos.todos.length)
+        for (let index = 0; index < selectedTodos.todos.length; index++) {
+            if (selectedTodos.todos[index].id === list.id) {
+                dispatch(completeTodo({list, selectedTodos, index}))
+                selectedTodos.todos.splice(index, 1, list)
+                setSelectedTodos({...selectedTodos})
+            }
+        }
+
     }
     return (
         <>
@@ -116,21 +137,38 @@ function Todo() {
                     )
                     :
                     (
-                        <ButtonShowFormCreateTodosLists
-                            onClick={showFormCreateTodos}
-                        >
-                            Создать новую задачу
-                        </ButtonShowFormCreateTodosLists>
+                        <>
+                            <ButtonShowFormCreateTodosLists
+                                onClick={showFormCreateTodos}
+                            >
+                                Создать новую задачу
+                            </ButtonShowFormCreateTodosLists>
+                            <select name="appliedFilter" className="todosFilterSelect" onChange={e => selectedFilterForTodos(e)}>
+                              <option value="all">All</option>
+                              <option value="uncompleted">Uncompleted</option>
+                              <option value="completed">Completed</option>
+                            </select>
+                        </>
                     )
             }
             {
                 todos.length !== 0 ?
-                    todos.sort((a, b) => b.priority - a.priority).map((lists, index) => {
+                    todos.filter(todo => {
+                        if (selectedFilter === 'all') {
+                            return todos
+                        } else if (selectedFilter === 'completed') {
+                            return todo.completed === true
+                        } else if (selectedFilter === 'uncompleted') {
+                            return todo.completed === false
+                        }
+                    }).sort((a, b) => b.priority - a.priority).map((lists) => {
                         console.log(todos)
                         return (
                             lists.editable === true ? (
                                     <form className="dataTodosList" key={lists.id}>
-                                        <input className="todosListTitle" name="title" defaultValue={lists.title} onKeyDown={(e) => updatedTodo(e, lists, index)} autoFocus={true}/>
+                                        <label className="todosListTitle">
+                                            <input className="todosListTitle" name="title" defaultValue={lists.title} onKeyDown={(e) => updatedTodo(e, lists)} autoFocus={true}/>
+                                        </label>
                                         <div className="todoListDeleteAndEdit">
                                             <DeleteIcon className="deleteIconTodosLists" onClick={(e) => removeTodo(e, lists.id)}/>
                                         </div>
@@ -139,17 +177,17 @@ function Todo() {
                                 (
                                     <div className="dataTodosList" key={lists.id}>
                                         {lists.completed === true ?
-                                            <label className="todosListTitle completed" onClick={e => isCompleted(e, lists, index)}>
+                                            <label className="todosListTitle completed" onClick={e => isCompleted(e, lists)}>
                                                 <input className="todosListTitle completed" name="title" defaultValue={lists.title} disabled={true} autoFocus={true}/>
                                             </label>
                                             :
-                                            <label className="todosListTitle" onClick={e => isCompleted(e, lists, index)}>
+                                            <label className="todosListTitle" onClick={e => isCompleted(e, lists)}>
                                                 <input className="todosListTitle" name="title" defaultValue={lists.title} disabled={true} autoFocus={true}/>
                                             </label>
                                         }
                                         <div className="todoListDeleteAndEdit">
                                             <DeleteIcon className="deleteIconTodosLists" onClick={(e) => removeTodo(e, lists.id)}/>
-                                            <EditIcon className="editIconTodosLists" onClick={(e) => editingTodo(e, lists.id, index)}/>
+                                            <EditIcon className="editIconTodosLists" onClick={(e) => editingTodo(e, lists.id)}/>
                                         </div>
                                     </div>
                                 )

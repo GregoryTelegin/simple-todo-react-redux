@@ -96,3 +96,19 @@
 .completed {
     text-decoration: line-through;
 }
+
+.todosListsFilterSelect {
+    width: 8%;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 8px;
+    position: absolute;
+    right: 20%;
+    top: 25px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
