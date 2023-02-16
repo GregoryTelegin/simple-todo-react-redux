@@ -6,7 +6,6 @@
 # Для того чтобы запустить: 
 
 > git clone https://github.com/GregoryTelegin/simple-todo-react-redux.git 
->>>>>>> ccbe84b7d7fafddeea07fd227ce9bf958db7bd53
 
 > cd simple-todo-react-redux
 
@@ -20,7 +19,6 @@
 > npm start 
 
 # Для запуска сервера: 
->>>>>>> ccbe84b7d7fafddeea07fd227ce9bf958db7bd53
 
 Открыть терминал git Bash в проекте
 
