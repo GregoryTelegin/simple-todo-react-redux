@@ -2,7 +2,7 @@
 # Для того чтобы запустить:
 
 > git clone https://github.com/GregoryTelegin/simple-todo-react-redux.git
-=======
+
 # Для того чтобы запустить: 
 
 > git clone https://github.com/GregoryTelegin/simple-todo-react-redux.git 
@@ -11,11 +11,10 @@
 
 > npm install
 
-<<<<<<< HEAD
 > npm start
 
 # Для запуска сервера:
-=======
+
 > npm start 
 
 # Для запуска сервера: 
