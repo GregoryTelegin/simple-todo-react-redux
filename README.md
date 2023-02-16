@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Для того чтобы запустить:
 
 > git clone https://github.com/GregoryTelegin/simple-todo-react-redux.git
