@@ -1,0 +1,124 @@
+{
+  "todosLists": [
+    {
+      "id": "8b3d1e11-c73a-439a-aac6-f060d77cab45",
+      "title": "Выше среднего",
+      "editable": false,
+      "priority": "4",
+      "todos": []
+    },
+    {
+      "id": "8dbbc6ec-7453-463c-9e3a-daab24ae77a0",
+      "title": "Ниже среднего",
+      "editable": false,
+      "priority": "2",
+      "todos": []
+    },
+    {
+      "id": "6b69fdab-2b12-44c1-ad2c-36dd245dd93c",
+      "title": "Низший приоритет",
+      "editable": false,
+      "priority": "0",
+      "todos": []
+    },
+    {
+      "id": "38b389f9-f986-43d5-a6d9-e1983a2ee9a7",
+      "title": "Наивысший приоритет",
+      "editing": false,
+      "priority": "6",
+      "todos": [
+        {
+          "id": "9bfaed48-b9f2-4ca5-84b5-52c4913fe3d0",
+          "title": "Высший приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "6"
+        },
+        {
+          "id": "14070901-3d19-4cb4-a8a8-1441b491a774",
+          "title": "Высший приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "6"
+        },
+        {
+          "id": "46aff039-07d0-4fcb-9c71-b9e6e6972493",
+          "title": "Высочайший приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "6"
+        },
+        {
+          "id": "969e3666-ef98-492d-8da7-56dd578dca1f",
+          "title": "Высокий приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "5"
+        },
+        {
+          "id": "301568c5-3d91-4b6d-84b8-37879916ef73",
+          "title": "Средний приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "3"
+        },
+        {
+          "id": "e959ce65-40c5-48ae-b31c-230f51f42751",
+          "title": "Ниже среднего",
+          "editable": false,
+          "completed": true,
+          "priority": "2"
+        },
+        {
+          "id": "827d5e52-179f-4c74-897a-5056997d250c",
+          "title": "Низкий приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "1"
+        },
+        {
+          "id": "8f8c6825-882c-45ab-829c-e661a755c329",
+          "title": "Низкий приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "1"
+        },
+        {
+          "id": "721a1ffe-ec16-42f2-8789-21f4eed57811",
+          "title": "Высочайший приоритет",
+          "editable": false,
+          "completed": true,
+          "priority": "0"
+        }
+      ]
+    },
+    {
+      "id": "a44b2c81-2b09-426e-86b0-7859e5707f4f",
+      "title": "Высокий приоритет",
+      "editing": false,
+      "priority": "5",
+      "todos": []
+    },
+    {
+      "id": "04ac9b5a-38d7-49d1-9e80-4c2d35ce9219",
+      "title": "Ниже Высокого",
+      "editing": false,
+      "priority": "4",
+      "todos": []
+    },
+    {
+      "id": "f90d9fe6-94ef-4b91-9e63-fbe5d02f04ad",
+      "title": "Высочайший приоритет",
+      "editing": false,
+      "priority": "6",
+      "todos": []
+    },
+    {
+      "id": "81eca455-b588-4163-852c-d7f7aab40c53",
+      "title": "Самый низкий приоритет",
+      "editing": false,
+      "priority": "0",
+      "todos": []
+    }
+  ]
+}

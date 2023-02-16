@@ -1,0 +1,14 @@
+.createTodosListButton {
+    margin: 25px 30% 0 30%;
+    padding: 8px 0 8px 0;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    background-color: crimson;
+    color: whitesmoke;
+    font-size: 20px;
+    font-family: Calibri;
+}
